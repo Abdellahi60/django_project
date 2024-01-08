@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-
+from .views import ProductExportCSVView
 from . import views
 
 urlpatterns = [
@@ -40,4 +40,23 @@ urlpatterns = [
     path('productbasket/<int:pk>/', views.ProductBasketDetail.as_view(), name='productbasket_detail'),
     path('productbasket/update/<int:pk>/', views.ProductBasketUpdate.as_view(), name='productbasket_update'),
     path('productbasket/delete/<int:pk>/', views.ProductBasketDelete.as_view(), name='productbasket_delete'),
+
+    path('export/products/', ProductExportCSVView.as_view(), name='export_products_csv'),
+
+    path('import/product',views.import_product, name='data-product'),
+
+    path('export/product-family/', views.export_product_family, name='export-product-family'),
+
+    path('product_family_import/',views.import_product_family, name='import-product-family'),
+
+    path('import/selling-point/', views.import_selling_point, name='import-selling-point'),
+
+    path('export/selling-point/', views.SellingPointExportCSVView.as_view(), name='export-selling-point'),
+    path('export/price/', views.PriceExportCSVView.as_view(), name='export-price'),
+    path('import/price/', views.import_price, name='import-price'),
+    path('export/basket/', views.BasketExportCSVView.as_view(), name='export-basket'),
+    path('import/basket/', views.import_basket, name='import-basket'),
+    path('export/product_basket/', views.BasketExportCSVView.as_view(), name='export-product-basket'),
+    path('import/product_basket/', views.import_basket, name='import-product-basket'),
+    
 ]
